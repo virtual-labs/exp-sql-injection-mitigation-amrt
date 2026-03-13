@@ -2,35 +2,69 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "What is the primary technical cause of a SQL Injection vulnerability?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Using a database that doesn't support encryption.",
+        "b": "Directly concatenating user input into SQL query strings.",
+        "c": "Failing to use a firewall.",
+        "d": "Storing passwords in plain text."
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Encryption protects data at rest or transit but doesn't prevent logic manipulation via SQLi.",
+        "b": "Concatenation allows user input to be interpreted as executable SQL code, which is the root cause of SQLi.",
+        "c": "Firewalls (WAFs) can help detect SQLi, but the root cause is in the application code.",
+        "d": "Plain text passwords are a security risk, but not the cause of SQL injection."
       },
-      "correctAnswer": "a",
+      "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "How does a tautology-based attack like ' OR '1'='1 work?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "It crashes the database server.",
+        "b": "It encrypts the database records.",
+        "c": "It makes the WHERE clause always evaluate to true, bypassing authorization checks.",
+        "d": "It deletes all users from the database."
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "SQLi typically aims to steal or manipulate data, not crash the server.",
+        "b": "Attackers usually want to decrypt or read data, not encrypt it.",
+        "c": "Since '1'='1' is always true, the OR condition makes the entire query true for every row.",
+        "d": "While possible, a tautology attack is specifically designed to bypass checks, not necessarily delete data."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the purpose of using '--' in a SQL injection payload?",
+      "answers": {
+        "a": "To increment a numerical value.",
+        "b": "To start a new SQL command.",
+        "c": "To comment out the rest of the original query, ignoring subsequent checks.",
+        "d": "To escape special characters."
+      },
+      "explanations": {
+        "a": "In SQL, '--' is a comment, not an increment operator.",
+        "b": "A semicolon ';' is usually used to start a new command.",
+        "c": "By commenting out the rest of the query, attackers can skip password checks or other logic.",
+        "d": "Backslashes or doubling quotes are used for escaping, not '--'."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following query structures is most likely vulnerable to SQL Injection?",
+      "answers": {
+        "a": "SELECT * FROM users WHERE id = ?",
+        "b": "db.execute('SELECT * FROM products WHERE category = $1', [cat])",
+        "c": "const q = 'SELECT * FROM items WHERE nameryry = ' + itemName;",
+        "d": "Executing a stored procedure with safe parameters."
+      },
+      "explanations": {
+        "a": "The '?' indicates a placeholder for a parameterized query, which is secure.",
+        "b": "The '$1' and the array argument indicate a parameterized query, which is secure.",
+        "c": "String concatenation with '+' directly puts user input into the query string, making it vulnerable.",
+        "d": "Stored procedures, when used correctly with parameters, are generally secure."
       },
       "correctAnswer": "c",
       "difficulty": "beginner"

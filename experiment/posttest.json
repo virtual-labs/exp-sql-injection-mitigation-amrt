@@ -2,38 +2,72 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "Which of the following is considered the most effective primary defense against SQL Injection?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Client-side input validation.",
+        "b": "Database-level row encryption.",
+        "c": "Parameterized Queries (Prepared Statements).",
+        "d": "Frequent database backups."
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "This is a Sample Question 2?",
-      "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
-      },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Client-side validation can be bypassed easily by attackers using tools like Burp Suite.",
+        "b": "Encryption hides data but doesn't prevent queries from being manipulated.",
+        "c": "Parameterized queries separate SQL logic from data, ensuring input is never executed as code.",
+        "d": "Backups help in recovery but do not prevent the attack itself."
       },
       "correctAnswer": "c",
-      "difficulty": "beginner"
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "In the experiment's 'Secure Mode', how does the database handle the payload ' OR '1'='1'?",
+      "answers": {
+        "a": "It executes it as a logic bypass.",
+        "b": "It treats it as a single literal string for matching, not as part of the SQL command.",
+        "c": "It automatically deletes the user input.",
+        "d": "It crashes the application to prevent access."
+      },
+      "explanations": {
+        "a": "This only happens in 'Vulnerable Mode' where string concatenation is used.",
+        "b": "Parameterized queries ensure the database engine treats input strictly as data.",
+        "c": "The input is kept as is, but it's compared literally against the password field.",
+        "d": "Secure code should handle invalid attempts gracefully, not crash."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What is the key advantage of a Prepared Statement over dynamic SQL?",
+      "answers": {
+        "a": "It makes the query run significantly slower.",
+        "b": "It allows the database to compile the query structure before the actual data is provided.",
+        "c": "It permits the use of more complex JOIN statements.",
+        "d": "It allows the programmer to skip writing WHERE clauses."
+      },
+      "explanations": {
+        "a": "Prepared statements can actually be faster due to pre-compilation.",
+        "b": "By compiling the structure first, the database knows exactly what the logic is before any user data arrives.",
+        "c": "Both support complex joins; that's not the primary advantage here.",
+        "d": "WHERE clauses are still required for filtering."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Why should input validation be used if parameterized queries are already in place?",
+      "answers": {
+        "a": "Because parameterized queries are easily bypassed.",
+        "b": "To provide a 'defense-in-depth' approach and reduce the overall attack surface.",
+        "c": "Input validation is the only way to prevent tautology attacks.",
+        "d": "It is not necessary at all if you use prepared statements."
+      },
+      "explanations": {
+        "a": "Parameterized queries are very robust against SQLi.",
+        "b": "Defense-in-depth means having multiple layers of security. Validation helps catch other types of malformed data.",
+        "c": "Tautologies are perfectly handled by parameterized queries.",
+        "d": "It is still a best practice for data integrity and catching other vulnerabilities like XSS."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
     }
   ]
 }
