@@ -1,11 +1,7 @@
-EMPTY
-<!-- Remove all lines above this line before making changes to the file -->
-### Subject Matter Experts
-| SNo. | Name | Email | Institute | ID |
-| :---: | :---: | :---: | :---: | :---: |
-| 1 | name | email | institute | id |
+### Contributors List
 
-### Developers
-| SNo. | Name | Email | Institute | ID |
-| :---: | :---: | :---: | :---: | :---: |
-| 1 | name | email | institute | id |
+| SrNo | Name                 | Faculty or Student | Department                                     | Institute                  | Email id                 |
+| :--- | :------------------- | :----------------- | :--------------------------------------------- | :------------------------- | :----------------------- |
+| 1    | Dr. Sriram Sankaran  | Faculty            | Center for Cybersecurity Systems and Networks  | Amrita Vishwa Vidyapeetham | srirams@am.amrita.edu    |
+| 2    | Pavithra S P         | Faculty            | Center for Cyber Security Systems and Networks | Amrita Vishwa Vidyapeetham | pavithrasp@am.amrita.edu |
+| 3    | Bhavya Ottappurakkal | Faculty            | Center for Cyber Security Systems and Networks | Amrita Vishwa Vidyapeetham | bhavyao@am.amrita.edu    |
