@@ -26,10 +26,24 @@ Attackers use SQL comment characters (`--`) to truncate the rest of the query, r
 - **Resulting Query:** `SELECT * FROM users WHERE username = 'admin' AND password = '' OR '1'='1' --'`
 - **Effect:** Everything after the `--` is ignored, effectively removing the password requirement.
 
+<h3>Types of SQL Injection</h3>
+SQL Injection attacks can be categorized based on the method used to extract data or interact with the database:
+
+<h4>1. Union-Based SQL Injection</h4>
+This technique leverages the `UNION` SQL operator to combine the results of the original query with a malicious query. It allows an attacker to extract data from other tables within the database by appending their results to the legitimate output.
+
+<h4>2. Error-Based SQL Injection</h4>
+In this attack, the adversary intentionally provides malformed input to trigger database error messages. These messages often reveal sensitive information about the database's schema, version, or even specific data, which the attacker can use to refine their subsequent attacks.
+
+<h4>3. Blind SQL Injection</h4>
+Unlike other types, Blind SQL Injection does not return data directly in the application's response. Instead, the attacker observes the application's behavior (e.g., changes in page content or response time) to infer information. 
+- **Boolean-Based:** The application returns different content depending on whether a SQL query evaluates to TRUE or FALSE.
+- **Time-Based:** The attacker injects a command that causes the database to wait for a specific amount of time before responding, confirming the success of the injection.
+
 <h3>Countermeasures</h3>
 
 <h4>1. Parameterized Queries (Prepared Statements)</h4>
-This is the primary defense against SQL injection. Instead of building a query string with user input, the application defines the SQL structure first and sends the user input as separate parameters.
+This is the primary defense against SQL Injection. Instead of building a query string with user input, the application defines the SQL structure first and sends the user input as separate parameters.
 - **Mechanism:** The database engine compiles the SQL command before the user data is attached.
 - **Effect:** User inputs are treated strictly as **literal data** and never as executable SQL code. A payload like `' OR '1'='1` would be searched for as a literal password string, failing to find a match.
 

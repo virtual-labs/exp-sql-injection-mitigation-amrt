@@ -57,7 +57,7 @@
       "answers": {
         "a": "SELECT * FROM users WHERE id = ?",
         "b": "db.execute('SELECT * FROM products WHERE category = $1', [cat])",
-        "c": "const q = 'SELECT * FROM items WHERE nameryry = ' + itemName;",
+        "c": "const q = 'SELECT * FROM items WHERE name = ' + itemName;",
         "d": "Executing a stored procedure with safe parameters."
       },
       "explanations": {
